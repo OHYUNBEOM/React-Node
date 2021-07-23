@@ -1,0 +1,5 @@
+Node js Download
+node -v 로 설치되어있는지 확인
+npm init
+Express js 다운받기 // npm install express --save
+MongoDB 연결하기
