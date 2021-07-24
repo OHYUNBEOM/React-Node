@@ -3,3 +3,5 @@ node -v 로 설치되어있는지 확인
 npm init
 Express js 다운받기 // npm install express --save
 MongoDB 연결하기
+models 폴더 생성 
+user.js 파일 --> 필요한 user data들 생성 및 설정
