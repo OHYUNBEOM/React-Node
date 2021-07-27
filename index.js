@@ -4,10 +4,15 @@ const port = 5000 // localhost:5000
 const bodyParser=require('body-parser');//npm install body-parser 로 받아온 body-parser 을 불러옴
 const { User }=require("./models/User"); // models 의 User.js 파일을 불러옴
 
+// //application/x-www-form-urlencoded 로 넘어오는 정보를 분석해주기 위해 필요함
+// app.use(bodyParser.urlencoded({extended: true}));
+// //application/json --> json 형태로 넘어오는걸 받기위해서 필요함
+// app.use(bodyParser.json());
+
 //application/x-www-form-urlencoded 로 넘어오는 정보를 분석해주기 위해 필요함
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.urlencoded({extended:true}));
 //application/json --> json 형태로 넘어오는걸 받기위해서 필요함
-app.use(bodyParser.json());
+app.use(express.json());
 
 
 const mongoose = require('mongoose');//NoSQL
