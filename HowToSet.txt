@@ -9,3 +9,4 @@ npm install body-parser --save 로 body-parser 다운
 postman 다운 , + 눌러서 post 로 해주고 url 은 http://localhost:5000/register 로, Body 부분 raw JSON 변경 후 입력
 nodemon 다운(소스를 변경할때 그것을 감지해서 자동으로 서버를 재시작해주는 tool)-->npm install nodemon --save-dev
 nodemon 즉 수정사항을 바로바로 사이트에 적용시키기 위해 실행할 때 npm run start 대신 npm run dev 로 서버를 열어준다(package.json script 에 그렇게 지정했기에)
+npm install bcrypt --save (비밀번호 암호화)
