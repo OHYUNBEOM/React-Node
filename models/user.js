@@ -54,6 +54,16 @@ userSchema.pre('save', function(next){//index 의 user.save 전에 무엇을 한
     }
 })
 
+
+userSchema.methods.comparePassword=function(plainPassword,cb){
+    //plainpassword --> 1234567 와 암호화된 비밀번호가 같은지 확인 / 기존 비밀번호를 암호화 시켜서 확인
+    bcyrpt.compare(plainPassword,this.password,function(err,isMatch){//기존 password와 비교해서 
+        if(err) return cb(err),//다르면 err 메시지 출력
+        cb(null,isMatch)//같으면 cb(callbackfunction)에 err가 없으니 null 을 주고, isMatch 즉 true란 말
+    })
+}
+
+
 const User=mongoose.model('User',userSchema)
 
 module.exports={ User }
