@@ -3,8 +3,10 @@ const app = express()
 const port = 5000 // localhost:5000
 const bodyParser= require('body-parser');//npm install body-parser 로 받아온 body-parser 을 불러옴
 const { User }= require("./models/User"); // models 의 User.js 파일을 불러옴
+const { auth }=require('./middleware/auth');//middleware 의 auth.js 파일 불러옴
 const cookieParser=require('cookie-parser');
 const config=require('./config/key');
+
 
 // //application/x-www-form-urlencoded 로 넘어오는 정보를 분석해주기 위해 필요함
 // app.use(bodyParser.urlencoded({extended: true}));
@@ -26,7 +28,7 @@ mongoose.connect(config.mongoURI,{
 app.get('/',(req, res)=>res.send('Hello World!'))//localhost:5000 접속시 보여지는 화면
 
 
-app.post('/register',(req,res) => {
+app.post('/api/users/register',(req,res) => {
     //회원 가입 시 필요한 정보를 client 에서 가져오면 이를 데이터베이스에 넣어준다
     //post 형식이기에 postman 사용시 post 버전으로! + endpoint 를 register 로 설정했기에 
     //postman 사용시에 http://localhost:5000/register 로 사용
@@ -40,7 +42,7 @@ app.post('/register',(req,res) => {
     })
 })
 
-app.post('/login',(req,res)=>{
+app.post('/api/users/login',(req,res)=>{
     //요청된 이메일을 DB에서 찾는다
     User.findOne({email:req.body.email},(err,user)=>{
         if(!user)
@@ -65,5 +67,23 @@ app.post('/login',(req,res)=>{
         })
     })
 })
+
+
+
+app.get('/api/users/auth',auth,(req,res)=>{
+    //여기까지 미들웨어를 통과해 왔다는 말은 Auth 가 True 라는 말
+    res.status(200).json({
+        _id:req.user._id,
+        isAdmin: req.user.role===0 ? false : true,//role 이 0 -> 일반유저 , role 이 0이 아니면 관리자
+        isAuth:true,
+        email:req.user.email,
+        name:req.user.name,
+        lastname:req.user.lastname,
+        role:req.user.role,
+        image:req.user.image
+    })
+})
+
+
 
 app.listen(port, ()=> console.log(`Example app listening on port ${port}!`))
