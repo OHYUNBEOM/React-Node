@@ -74,6 +74,21 @@ userSchema.methods.generateToken=function(cb){
     })
 }
 
+
+userSchema.statics.findByToken=function(token,cb){//findByToken 즉 토큰을 찾는 함수 생성
+    var user=this;//user정보를 쓰기 위함
+        //user._id + ''=token;
+        jwt.verify(token,'secretToken',function(err,decoded){// generateToken 즉 토큰생성시 secretToken 으로 줬기에(jwt.verify ==> Token 을 복호화)
+        //유저 아이디를 이용해서 유저를 찾은 다음에
+        //클라이언트에서 가져온 token 과 db 에 보관된 토큰이 일치하는지 확인
+        user.findOne({"_id":decoded,"token":token},function(err,user){
+            if(err) return cb(err);
+            cb(null,user)
+        })
+    })
+}
+
+
 const User=mongoose.model('User',userSchema)
 
 module.exports={ User }
