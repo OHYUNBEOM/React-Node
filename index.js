@@ -85,5 +85,31 @@ app.get('/api/users/auth',auth,(req,res)=>{
 })
 
 
+// app.get('api/users/logout',auth,(req,res)=>{//로그인 된 상태이기에 auth 미들웨어를 넣어준다
+//     User.findOneAndUpdate({_id:req.user._id},//찾아서 업데이트 해준다
+//         {token : ""}//token 을 삭제해주고
+//         ,(err,user)=>{
+//             if(err) return res.json({success:false, err});//err 발생시 false 메시지, 에러메시지
+//             return res.status(200).send({//성공시에
+//                 success:true//true 반환
+//             })
+//         })
+// })
+
+
+app.get('/api/users/logout', auth, (req, res) => {
+
+    // console.log('req.user', req.user)
+
+    User.findOneAndUpdate({ _id: req.user._id },
+    { token: "" }
+    , (err, user) => {
+    if (err) return res.json({ success: false, err });
+    return res.status(200).send({
+    success: true
+        })
+    })
+})
+
 
 app.listen(port, ()=> console.log(`Example app listening on port ${port}!`))
