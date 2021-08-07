@@ -12,3 +12,4 @@ nodemon 즉 수정사항을 바로바로 사이트에 적용시키기 위해 실
 npm install bcrypt --save (비밀번호 암호화)
 npm install jsonwebtoken --save (토큰생성을 위해) / https://www.npmjs.com/package/jsonwebtoken 참조
 npm install cookie-parser --save / token 저장을 위해 cookie 생성
+React Router Dom 개념
