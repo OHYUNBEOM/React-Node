@@ -23,3 +23,7 @@ npm install concurrently --save / Front 와 Back 서버 둘다 동시에 켜기 
 /// script 의 dev 부분 npm run start -- prefix client 는 client 안에 있는 package.json 의 start 를 찾아서 켠다는 의미
 Ant Design --> 내가 사용할 Css Framework ( 단점 : 사이즈가 매우 큼 기능이 많아서, 장점 : 매우 깔끔하며 쓰기가 굉장히 편하다) // https://ant.design/
 프레임워크 사용 --> cd client / npm install antd --save // css Framework 다운
+Redux --> React 의 두가지 형태인 props , state 중에 state 를 사용할것인데 Redux 는 이와같은 State 를 관리하는 것
+npm install redux react-redux redux-promise redux-thunk --> Redux 를 사용하기 위해 네가지 Dependency 들을 다운
+구글에 redux extension 검색 후 , Redux DevTools 확장프로그램 구글에 설치해주기
+
