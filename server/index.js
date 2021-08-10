@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 5000 // localhost:5000
 const bodyParser= require('body-parser');//npm install body-parser 로 받아온 body-parser 을 불러옴
 const { User }= require("./models/User"); // models 의 User.js 파일을 불러옴
 const { auth }=require('./middleware/auth');//middleware 의 auth.js 파일 불러옴
@@ -26,6 +25,11 @@ mongoose.connect(config.mongoURI,{
 .catch(err=>console.log(err))
 
 app.get('/',(req, res)=>res.send('Hello World!'))//localhost:5000 접속시 보여지는 화면
+
+
+app.get('/api/hello',(req,res) =>{
+    res.send("Hello World!~ ")
+})
 
 
 app.post('/api/users/register',(req,res) => {
@@ -112,5 +116,6 @@ app.get('/api/users/logout', auth, (req, res) => {
 })
 
 
+
+const port = 5000 // localhost:5000
 app.listen(port, ()=> console.log(`Example app listening on port ${port}!`))
-//index
