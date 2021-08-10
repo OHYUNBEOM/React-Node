@@ -12,4 +12,14 @@ nodemon 즉 수정사항을 바로바로 사이트에 적용시키기 위해 실
 npm install bcrypt --save (비밀번호 암호화)
 npm install jsonwebtoken --save (토큰생성을 위해) / https://www.npmjs.com/package/jsonwebtoken 참조
 npm install cookie-parser --save / token 저장을 위해 cookie 생성
-npm install react-router-dom --save / React Router Dom 개념 -> page 간 이동의 개념 
+npm install react-router-dom --save / React Router Dom 개념 -> page 간 이동의 개념
+************************** npm run start 명령어 치기 위해서 폴더경로가 정확히 지정되어있어야 하기에 cd client // cd server 필수 !! ***** 
+npm install axios --save / axios 를 통해서 request,response 요청 응답의 역할을함
+npm install http-proxy-middleware --save // server 은 5000번 port, client 는 3000번 port 를 이용하고 있기에 요청,응답에서 제한사항이 있는데 proxy 를 통해서 이를 해결하기 위함
+proxy --> https://create-react-app.dev/docs/proxying-api-requests-in-development/ 참조
+proxyserver --> 1) 아이피를 임의로 바꿀 수 있다. 2) 보내는 데이터도 임의로 바꿀 수 있다. 3) 방화벽 기능 4) 웹필터 기능 5)캐쉬데이터,공유데이터 제공 기능
+npm install concurrently --save / Front 와 Back 서버 둘다 동시에 켜기 위해서 필요한 라이브러리
+/// "dev": "concurrently \"npm run backend\" \"npm run start --prefix client\"" 를 상위 package-json 의 script 부분에 등록함으로써 back 과 front 를 동시에 켤 수있음
+/// script 의 dev 부분 npm run start -- prefix client 는 client 안에 있는 package.json 의 start 를 찾아서 켠다는 의미
+Ant Design --> 내가 사용할 Css Framework ( 단점 : 사이즈가 매우 큼 기능이 많아서, 장점 : 매우 깔끔하며 쓰기가 굉장히 편하다) // https://ant.design/
+프레임워크 사용 --> cd client / npm install antd --save // css Framework 다운
