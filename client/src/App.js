@@ -9,6 +9,7 @@ import {
 import LandingPage from './components/views/Landingpage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import Auth from './hoc/auth'
 
 
 //Routing 기능 , 어떻게 페이지가 클릭시에 이동되는지 Routing으로 구현
@@ -24,10 +25,10 @@ function App() {
           of them to render at a time
         */}
         <Switch>
-          <Route exact path="/" component={LandingPage} /> 
+          <Route exact path="/" component={Auth(LandingPage, null)}/> 
           {/* component={?} --> ?가 LandingPage 로 보내주는것을 의미  */}
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/login" component={Auth(LoginPage, false)} />
+          <Route exact path="/register" component={Auth(RegisterPage, false)} />
         </Switch>
       </div>
     </Router>
